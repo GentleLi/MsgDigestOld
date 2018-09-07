@@ -1,16 +1,14 @@
-#include <fcntl.h>
-#include <stdio.h>
-#include "MD5.h"
-#include <stdlib.h>
-#include "unistd.h"
+//
+// Created by admin on 2018/9/7.
+//
 
-const int READ_DATA_SIZE = 8192;
-const int MD5_SIZE = 16;
+#include "verify.h"
 
-int GetFileMD5(const char *filePath, char *strMD5) {
+char *GetFileMD5(const char *filePath, char *strMD5) {
     int i;
     int fd;
     int ret;
+//    char info[40000] = {0};
     unsigned char data[READ_DATA_SIZE];
     unsigned char md5_value[MD5_SIZE];
     MD5_CTX md5;
@@ -18,7 +16,7 @@ int GetFileMD5(const char *filePath, char *strMD5) {
     fd = open(filePath, O_RDONLY);
     if (-1 == fd) {
         perror("open");
-        return -1;
+        return strMD5;
     }
 
     // init md5
@@ -29,7 +27,7 @@ int GetFileMD5(const char *filePath, char *strMD5) {
         if (-1 == ret) {
             perror("read");
             close(fd);
-            return -1;
+            return strMD5;
         }
 
         MD5Update(&md5, data, ret);
@@ -46,6 +44,9 @@ int GetFileMD5(const char *filePath, char *strMD5) {
     for (i = 0; i < MD5_SIZE; i++) {
         snprintf(strMD5 + i * 2, 2 + 1, "%02x", md5_value[i]);
     }
-    strMD5[MD5_STR_LEN] = '\0'; // add end
-    return 0;
+//    strMD5[MD5_STR_LEN] = '\0'; // add end
+    return strMD5;
 }
+
+
+
