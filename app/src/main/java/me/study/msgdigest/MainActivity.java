@@ -2,6 +2,7 @@ package me.study.msgdigest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import me.study.msgdigest.digest.MD5Helper;
 import me.study.msgdigest.utils.AppUtils;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 String appPath = AppUtils.getAppPath();
 
                 tvMd5.setText(MD5Helper.getFileMd5(appPath));
+
+                Log.e(TAG, MD5Helper.getShaOne(appPath));
 
             }
         });

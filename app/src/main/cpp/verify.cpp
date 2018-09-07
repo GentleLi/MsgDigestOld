@@ -3,6 +3,7 @@
 //
 
 #include "verify.h"
+#include "sha1.hpp"
 
 char *GetFileMD5(const char *filePath, char *strMD5) {
     int i;
@@ -47,6 +48,15 @@ char *GetFileMD5(const char *filePath, char *strMD5) {
 //    strMD5[MD5_STR_LEN] = '\0'; // add end
     return strMD5;
 }
+
+
+std::string getSha1(char *filepath) {
+
+    std::string sha=SHA1::from_file(filepath);
+
+    return sha;
+}
+
 
 
 

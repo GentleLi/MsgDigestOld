@@ -16,6 +16,14 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_me_study_msgdigest_digest_MD5Helper_getFileMd5
         (JNIEnv *, jclass, jstring);
 
+/*
+ * Class:     me_study_msgdigest_digest_MD5Helper
+ * Method:    getShaOne
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_me_study_msgdigest_digest_MD5Helper_getShaOne
+        (JNIEnv *, jclass, jstring);
+
 #ifdef __cplusplus
 }
 #endif

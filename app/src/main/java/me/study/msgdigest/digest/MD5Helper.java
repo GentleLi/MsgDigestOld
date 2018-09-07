@@ -7,7 +7,6 @@ package me.study.msgdigest.digest;
 public class MD5Helper {
 
 
-
     static {
 
         System.loadLibrary("digest");
@@ -18,7 +17,7 @@ public class MD5Helper {
     public native static String getFileMd5(String filePath);
 
 
-
+    public native static String getShaOne(String filePath);
 
 
 }

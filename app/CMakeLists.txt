@@ -27,6 +27,7 @@ add_library( # Sets the name of the library.
 
              # Provides a relative path to your source file(s).
              src/main/cpp/verify.cpp
+             src/main/cpp/sha1.cpp
              src/main/cpp/digest.cpp
              src/main/cpp/MD5.cpp )
 
