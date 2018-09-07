@@ -3,7 +3,6 @@
 //
 
 #include "digest.h"
-#include "MD5.h"
 #include "verify.h"
 
 /*

@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
-    private TextView tvHello, tvMd5;
-    private Button btnHello, btnMd5;
+    private TextView tvHello, tvMd5, tvSha1;
+    private Button btnHello, btnMd5, btnSha1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         tvHello = (TextView) findViewById(R.id.tv_hello);
         tvMd5 = (TextView) findViewById(R.id.tv_md5);
+        tvSha1 = (TextView) findViewById(R.id.tv_sha1);
         btnHello = (Button) findViewById(R.id.btn_hello);
         btnMd5 = (Button) findViewById(R.id.btn_md5);
+        btnSha1 = (Button) findViewById(R.id.btn_sha1);
     }
 
     private void initData() {
@@ -59,11 +61,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String appPath = AppUtils.getAppPath();
+                String md5 = MD5Helper.getFileMd5(appPath);
+                tvMd5.setText("md5 : " + md5);
 
-                tvMd5.setText(MD5Helper.getFileMd5(appPath));
+                Log.e(TAG, md5);
 
-                Log.e(TAG, MD5Helper.getShaOne(appPath));
+            }
+        });
 
+        btnSha1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String appPath = AppUtils.getAppPath();
+                String sha1 = MD5Helper.getShaOne(appPath);
+                tvSha1.setText("sha1 : " + sha1);
+                Log.e(TAG, sha1);
             }
         });
 
